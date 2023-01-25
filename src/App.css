@@ -1,0 +1,13 @@
+header {
+    background-color: black;
+    color: white;
+}
+main {
+    color: white;
+    min-height: 75vh;
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
