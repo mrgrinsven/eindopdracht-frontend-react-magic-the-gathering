@@ -1,0 +1,20 @@
+.card-and-filter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    gap: 40px
+}
+
+img {
+    width: 250px;
+    border-radius: 15px;
+}

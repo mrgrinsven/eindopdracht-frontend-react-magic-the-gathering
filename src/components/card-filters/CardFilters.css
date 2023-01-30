@@ -1,0 +1,147 @@
+.filter-container {
+    background-color: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    margin: 20px 0 20px 0;
+}
+
+.icon-filter-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name-search-container {
+    width: 600px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px 5px 10px 5px;
+}
+
+#name-search {
+    width: 400px;
+    padding: 10px 10px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+#name-search:focus {
+    outline: none;
+}
+
+#name-search-button {
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 0 5px 5px 0;
+    padding: 5px;
+    min-width: 50px;
+    text-transform: uppercase;
+    font-size: 8px;
+    font-weight: bold;
+}
+#name-search-button:hover {
+    cursor: pointer;
+    background-color: ghostwhite;
+}
+
+#name-search-button img {
+    width: 30px;
+}
+
+#name-search-button:active {
+    transform: translateY(1px);
+}
+
+.color-filter {
+    display: flex;
+    flex-direction: row;
+    gap: 1px;
+    width: 400px;
+    padding: 10px 5px 10px 5px;
+    height: 100%;
+}
+
+.mana-cost-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 100%;
+    gap: 1px;
+    padding: 10px 5px 10px 5px;
+}
+
+.type-filter {
+    width: 280px;
+    padding: 10px 5px 10px 5px;
+}
+
+.type-list {
+    list-style: none;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1px;
+}
+
+.type-item {
+    text-align: center;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px 20px;
+    flex-grow: 1;
+}
+
+.type-item:hover {
+    cursor: pointer;
+}
+
+.rarity-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1px;
+    width: 300px;
+    height: 100%;
+    padding: 10px 5px 10px 5px;
+}
+
+#filter-search-button {
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 200px;
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#filter-search-button:hover {
+    cursor: pointer;
+    background-color: ghostwhite;
+}
+
+#filter-search-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

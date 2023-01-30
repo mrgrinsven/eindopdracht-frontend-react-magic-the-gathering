@@ -1,16 +1,33 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 
+import './CardSearch.css';
+
+import Card from '../../components/card/Card'
+import CardFilters from '../../components/card-filters/CardFilters'
+
 const CardSearch = () => {
+    const URI = 'https://api.magicthegathering.io/v1/cards';
+
     const [cardList, setCardList] = useState();
-    const URI = 'https://api.magicthegathering.io/v1/cards?&contains=imageUrl'
+
 
     useEffect(() => {
-        const controllerInitial = new AbortController();
+        const controller = new AbortController();
+
         async function getCardList() {
             try {
                 const result = await axios.get(URI, {
-                    signal: controllerInitial.signal,
+                    params: {
+                        name: '',
+                        colorIdentity: 'r',
+                        types: 'land',
+                        cmc: '',
+                        power: '',
+                        toughness: '',
+                        contains: 'imageUrl',
+                    },
+                    signal: controller.signal,
                 });
                 console.log(result)
                 setCardList(result.data.cards)
@@ -18,23 +35,32 @@ const CardSearch = () => {
                 console.error(e);
             }
         }
+
         getCardList();
 
         return function cleanup() {
-            controllerInitial.abort();
+            controller.abort();
         }
     }, []);
     return (
-        <div>
-            {cardList &&
-                <>
-                    {cardList.map((card) => {
-                        return (
-                            <img src={card.imageUrl} key={card.id}/>
-                        );
-                    })}
-                </>
-            }
+        <div className="inner-container">
+            <div className="card-and-filter-container">
+                <CardFilters/>
+                <div className="cards-container">
+                    {cardList &&
+                        <>
+                            {cardList.map((card) => {
+                                return (
+                                    <Card
+                                        cardImage={card.imageUrl}
+                                        key={card.id}
+                                    />
+                                );
+                            })}
+                        </>
+                    }
+                </div>
+            </div>
         </div>
     );
 };
