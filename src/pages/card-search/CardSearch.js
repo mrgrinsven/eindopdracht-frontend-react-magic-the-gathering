@@ -17,11 +17,11 @@ const CardSearch = () => {
 
         async function getCardList() {
             try {
-                const result = await axios.get(URI, {
+                const result = await axios.get(URI , {
                     params: {
                         name: '',
-                        colorIdentity: 'r',
-                        types: 'land',
+                        colorIdentity: 'w,r,b,g',
+                        types: '',
                         cmc: '',
                         power: '',
                         toughness: '',

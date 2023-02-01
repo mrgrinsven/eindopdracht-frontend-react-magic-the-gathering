@@ -2,19 +2,23 @@
     background-color: lightgrey;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     border-radius: 15px;
-    margin: 20px 0 20px 0;
+    margin: 40px 0 40px 0;
 }
 
-.icon-filter-container {
+.button-filter-container {
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: 5px;
 }
 
 .name-search-container {
-    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
 }
 
 .input-container {
@@ -24,7 +28,7 @@
     padding: 10px 5px 10px 5px;
 }
 
-#name-search {
+.name-search {
     width: 400px;
     padding: 10px 10px;
     border-style: solid;
@@ -34,11 +38,11 @@
     font-size: 16px;
 }
 
-#name-search:focus {
+.name-search:focus {
     outline: none;
 }
 
-#name-search-button {
+.name-search-button {
     background-color: white;
     border-style: solid;
     border-color: black;
@@ -50,76 +54,19 @@
     font-size: 8px;
     font-weight: bold;
 }
-#name-search-button:hover {
+.name-search-button:hover {
     cursor: pointer;
     background-color: ghostwhite;
 }
 
-#name-search-button img {
+.name-search-button img {
     width: 30px;
 }
 
-#name-search-button:active {
+.name-search-button:active {
     transform: translateY(1px);
 }
 
-.color-filter {
-    display: flex;
-    flex-direction: row;
-    gap: 1px;
-    width: 400px;
-    padding: 10px 5px 10px 5px;
-    height: 100%;
-}
-
-.mana-cost-filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 300px;
-    height: 100%;
-    gap: 1px;
-    padding: 10px 5px 10px 5px;
-}
-
-.type-filter {
-    width: 280px;
-    padding: 10px 5px 10px 5px;
-}
-
-.type-list {
-    list-style: none;
-    color: black;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 1px;
-}
-
-.type-item {
-    text-align: center;
-    background-color: white;
-    border: 1px solid black;
-    padding: 5px 20px;
-    flex-grow: 1;
-}
-
-.type-item:hover {
-    cursor: pointer;
-}
-
-.rarity-filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 1px;
-    width: 300px;
-    height: 100%;
-    padding: 10px 5px 10px 5px;
-}
 
 #filter-search-button {
     color: black;

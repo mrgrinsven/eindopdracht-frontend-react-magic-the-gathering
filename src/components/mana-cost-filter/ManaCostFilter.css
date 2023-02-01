@@ -1,0 +1,9 @@
+.mana-cost-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 300px;
+    gap: 2px;
+    height: 100%;
+}
