@@ -10,11 +10,12 @@ import TypeFilter from '../type-filter/TypeFilter';
 import CardNameSearch from '../card-name-search/CardNameSearch';
 import ArtistFilter from '../artist-filter/ArtistFilter';
 import SetFilter from '../set-filter/SetFilter';
+import PowerToughnessFilter from '../power-toughness-filter/PowerToughnessFilter';
 
 
 
 const CardFilters = () => {
-    const {setSearchParams, filterParams, nameParams, setNameParams} = useContext(CardParamsContext);
+    const {setSearchParams, filterParams} = useContext(CardParamsContext);
 
     function paramsFilterSearch() {
         setSearchParams(filterParams)
@@ -28,9 +29,14 @@ const CardFilters = () => {
                 <TypeFilter/>
                 <ManaCostFilter/>
                 <RarityFilter/>
-                <ArtistFilter/>
-                <SetFilter/>
+                <div>
+                    <ArtistFilter/>
+                    <SetFilter/>
+                    <PowerToughnessFilter/>
+                </div>
+
             </div>
+
             <button
                 id="filter-search-button"
                 type="button"

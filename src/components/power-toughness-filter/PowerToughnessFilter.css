@@ -1,0 +1,20 @@
+.power-toughness-container {
+    color: black;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+    width: 300px;
+    padding: 0 5px 10px 5px;
+}
+
+.select-box {
+    text-align: center;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+.select-box:focus {
+    outline: none;
+}
