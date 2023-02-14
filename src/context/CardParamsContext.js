@@ -11,6 +11,8 @@ const CardParamsContextProvider = ({children}) => {
         contains: 'imageUrl',
     });
     const [filterParams, setFilterParams] = useState({
+        artist: '',
+        setName: '',
         colorIdentity: '',
         types: '',
         cmc: '',
@@ -22,10 +24,6 @@ const CardParamsContextProvider = ({children}) => {
     });
     const [nameParams, setNameParams] = useState({
         name: '',
-        contains: 'imageUrl',
-    });
-    const [artistParams, setArtistParams] = useState({
-        artist: '',
         contains: 'imageUrl',
     });
 
@@ -55,8 +53,9 @@ const CardParamsContextProvider = ({children}) => {
     return (
         <CardParamsContext.Provider
             value={{
-                filterParams, setFilterParams, nameParams, setNameParams,
-                artistParams, setArtistParams, cardList, setSearchParams
+                filterParams, setFilterParams,
+                nameParams, setNameParams,
+                cardList, setSearchParams
             }}
         >
             {children}
