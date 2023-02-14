@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
+import {CardParamsContext} from '../../context/CardParamsContext';
 
 import './CardFilters.css';
 
@@ -10,7 +11,24 @@ import TypeFilter from '../type-filter/TypeFilter';
 import SearchIcon from '../../assets/search_icon.png';
 
 
+
 const CardFilters = () => {
+    const {setSearchParams, filterParams, nameParams, setNameParams} = useContext(CardParamsContext);
+
+    function paramsFilterSearch() {
+        setSearchParams(filterParams)
+    }
+
+    function paramsNameSearch() {
+        setSearchParams(nameParams)
+    }
+    function handleChange(event) {
+        setNameParams({
+            ...nameParams,
+            name: event.target.value,
+        });
+    }
+
     return (
         <div className="filter-container">
             <div className="name-search-container">
@@ -21,11 +39,15 @@ const CardFilters = () => {
                         type="search"
                         id="card-name-search"
                         name="card-name-search"
-                        placeholder="Search by Card Name"/>
+                        placeholder="Search by Card Name"
+                        onChange={handleChange}
+                        value={nameParams.name}
+                    />
                     <button
                         className="name-search-button"
                         id="card-name-search-button"
                         type="button"
+                        onClick={paramsNameSearch}
                     >
                         <img
                             src={SearchIcon}
@@ -62,6 +84,7 @@ const CardFilters = () => {
             <button
                 id="filter-search-button"
                 type="button"
+                onClick={paramsFilterSearch}
             >
                 filter search
             </button>

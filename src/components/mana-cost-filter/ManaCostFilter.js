@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
+import {CardParamsContext} from '../../context/CardParamsContext'
 
 import './ManaCostFilter.css';
 
@@ -18,6 +19,8 @@ import ManaCost10 from '../../assets/10.png';
 import ManaCostX from '../../assets/X.png';
 
 const ManaCostFilter = () => {
+        const {filterParams, setFilterParams} = useContext(CardParamsContext)
+
         const [manaFilter, setManaFilter] = useState({
                 cost0: false,
                 cost1: false,
@@ -31,15 +34,54 @@ const ManaCostFilter = () => {
                 cost9: false,
                 cost10: false,
                 costx: false,
+                previous: '',
         });
 
         function handleChange(event) {
                 const changedFieldName = event.target.name;
                 const newValue = event.target.checked;
-                setManaFilter({
-                        ...manaFilter,
-                        [changedFieldName]: newValue,
-                });
+                const paramValue = event.target.value;
+                if(manaFilter.previous === changedFieldName){
+                        setManaFilter({
+                                ...manaFilter,
+                                [changedFieldName]: newValue,
+                                previous: changedFieldName,
+                        });
+                } else {
+                        setManaFilter({
+                                ...manaFilter,
+                                [changedFieldName]:newValue,
+                                [manaFilter.previous]: false,
+                                previous: changedFieldName,
+                        });
+                }
+                if(changedFieldName === 'costx') {
+                        if (newValue) {
+                                setFilterParams({
+                                        ...filterParams,
+                                        cmc: '',
+                                        text: paramValue
+                                });
+                        } else {
+                                setFilterParams({
+                                        ...filterParams,
+                                        cmc: '',
+                                        text: '',
+                                });
+                        }
+                } else {
+                        if (newValue) {
+                                setFilterParams({
+                                        ...filterParams,
+                                        cmc: paramValue,
+                                });
+                        } else {
+                                setFilterParams({
+                                        ...filterParams,
+                                        cmc: '',
+                                });
+                        }
+                }
         }
 
     return (
@@ -50,6 +92,7 @@ const ManaCostFilter = () => {
                 name="cost0"
                 filter={manaFilter.cost0}
                 changeHandler={handleChange}
+                value="0"
             />
             <FilterButton
                 iconImage={ManaCost1}
@@ -57,6 +100,7 @@ const ManaCostFilter = () => {
                 name="cost1"
                 filter={manaFilter.cost1}
                 changeHandler={handleChange}
+                value="1"
             />
             <FilterButton
                 iconImage={ManaCost2}
@@ -64,6 +108,7 @@ const ManaCostFilter = () => {
                 name="cost2"
                 filter={manaFilter.cost2}
                 changeHandler={handleChange}
+                value="2"
             />
             <FilterButton
                 iconImage={ManaCost3}
@@ -71,6 +116,7 @@ const ManaCostFilter = () => {
                 name="cost3"
                 filter={manaFilter.cost3}
                 changeHandler={handleChange}
+                value="3"
             />
             <FilterButton
                 iconImage={ManaCost4}
@@ -78,6 +124,7 @@ const ManaCostFilter = () => {
                 name="cost4"
                 filter={manaFilter.cost4}
                 changeHandler={handleChange}
+                value="4"
             />
             <FilterButton
                 iconImage={ManaCost5}
@@ -85,6 +132,7 @@ const ManaCostFilter = () => {
                 name="cost5"
                 filter={manaFilter.cost5}
                 changeHandler={handleChange}
+                value="5"
             />
             <FilterButton
                 iconImage={ManaCost6}
@@ -92,6 +140,7 @@ const ManaCostFilter = () => {
                 name="cost6"
                 filter={manaFilter.cost6}
                 changeHandler={handleChange}
+                value="6"
             />
             <FilterButton
                 iconImage={ManaCost7}
@@ -99,6 +148,7 @@ const ManaCostFilter = () => {
                 name="cost7"
                 filter={manaFilter.cost7}
                 changeHandler={handleChange}
+                value="7"
             />
             <FilterButton
                 iconImage={ManaCost8}
@@ -106,6 +156,7 @@ const ManaCostFilter = () => {
                 name="cost8"
                 filter={manaFilter.cost8}
                 changeHandler={handleChange}
+                value="8"
             />
             <FilterButton
                 iconImage={ManaCost9}
@@ -113,6 +164,7 @@ const ManaCostFilter = () => {
                 name="cost9"
                 filter={manaFilter.cost9}
                 changeHandler={handleChange}
+                value="9"
             />
             <FilterButton
                 iconImage={ManaCost10}
@@ -120,6 +172,7 @@ const ManaCostFilter = () => {
                 name="cost10"
                 filter={manaFilter.cost10}
                 changeHandler={handleChange}
+                value="gte10"
             />
             <FilterButton
                 iconImage={ManaCostX}
@@ -127,6 +180,7 @@ const ManaCostFilter = () => {
                 name="costx"
                 filter={manaFilter.costx}
                 changeHandler={handleChange}
+                value=" X "
             />
         </div>
     );

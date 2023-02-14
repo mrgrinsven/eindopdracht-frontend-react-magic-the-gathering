@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 
 import './TypeFilter.css'
 
 import FilterButton from '../filter-button/FilterButton';
+import {CardParamsContext} from '../../context/CardParamsContext';
 
 const TypeFilter = () => {
+    const {filterParams, setFilterParams} = useContext(CardParamsContext);
+
     const [typeFilter, setTypeFilter] = useState({
         creature: false,
         artifact: false,
@@ -18,10 +21,22 @@ const TypeFilter = () => {
     function  handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.checked;
+        const paramValue = event.target.value;
         setTypeFilter({
             ...typeFilter,
             [changedFieldName]: newValue,
         });
+        if (newValue) {
+            setFilterParams({
+                ...filterParams,
+                types: filterParams.types + paramValue + '|'
+            });
+        } else {
+            setFilterParams({
+                ...filterParams,
+                types: filterParams.types.replace( paramValue + '|', '')
+            });
+        }
     }
 
     return (
@@ -32,6 +47,7 @@ const TypeFilter = () => {
                 filter={typeFilter.creature}
                 changeHandler={handleChange}
                 text="Creature"
+                value="creature"
             />
             <FilterButton
                 id="artifact"
@@ -39,6 +55,7 @@ const TypeFilter = () => {
                 filter={typeFilter.artifact}
                 changeHandler={handleChange}
                 text="Artifact"
+                value="artifact"
             />
             <FilterButton
                 id="instant"
@@ -46,6 +63,7 @@ const TypeFilter = () => {
                 filter={typeFilter.instant}
                 changeHandler={handleChange}
                 text="Instant"
+                value="instant"
             />
             <FilterButton
                 id="sorcery"
@@ -53,6 +71,7 @@ const TypeFilter = () => {
                 filter={typeFilter.sorcery}
                 changeHandler={handleChange}
                 text="Sorcery"
+                value="sorcery"
             />
             <FilterButton
                 id="land"
@@ -60,6 +79,7 @@ const TypeFilter = () => {
                 filter={typeFilter.land}
                 changeHandler={handleChange}
                 text="land"
+                value="land"
             />
             <FilterButton
                 id="enchantment"
@@ -67,6 +87,7 @@ const TypeFilter = () => {
                 filter={typeFilter.enchantment}
                 changeHandler={handleChange}
                 text="Enchantment"
+                value="enchantment"
             />
             <FilterButton
                 id="planeswalker"
@@ -74,6 +95,7 @@ const TypeFilter = () => {
                 filter={typeFilter.planeswalker}
                 changeHandler={handleChange}
                 text="Planeswalker"
+                value="planeswalker"
             />
         </div>
     );

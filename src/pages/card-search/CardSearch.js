@@ -1,47 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React, {useContext, useEffect, useState} from 'react';
+import axios from 'axios';
 
 import './CardSearch.css';
 
 import Card from '../../components/card/Card'
 import CardFilters from '../../components/card-filters/CardFilters'
+import {CardParamsContext} from '../../context/CardParamsContext';
 
 const CardSearch = () => {
-    const URI = 'https://api.magicthegathering.io/v1/cards';
+    const {cardList} = useContext(CardParamsContext);
 
-    const [cardList, setCardList] = useState();
-
-
-    useEffect(() => {
-        const controller = new AbortController();
-
-        async function getCardList() {
-            try {
-                const result = await axios.get(URI , {
-                    params: {
-                        name: '',
-                        colorIdentity: 'w,r,b,g',
-                        types: '',
-                        cmc: '',
-                        power: '',
-                        toughness: '',
-                        contains: 'imageUrl',
-                    },
-                    signal: controller.signal,
-                });
-                console.log(result)
-                setCardList(result.data.cards)
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        getCardList();
-
-        return function cleanup() {
-            controller.abort();
-        }
-    }, []);
     return (
         <div className="inner-container">
             <div className="card-and-filter-container">

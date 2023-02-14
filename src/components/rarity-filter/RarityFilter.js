@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 
 import './RarityFilter.css';
 
@@ -8,8 +8,11 @@ import Common from '../../assets/common.png';
 import Uncommon from '../../assets/uncommon.png';
 import Rare from '../../assets/rare.png';
 import Mythic from '../../assets/mythic.png';
+import {CardParamsContext} from '../../context/CardParamsContext';
 
 const RarityFilter = () => {
+    const {filterParams, setFilterParams} = useContext(CardParamsContext);
+
     const [rarityFilter, setRarityFilter] = useState({
         common: false,
         uncommon: false,
@@ -20,10 +23,22 @@ const RarityFilter = () => {
     function  handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.checked;
+        const paramValue = event.target.value;
         setRarityFilter({
             ...rarityFilter,
             [changedFieldName]: newValue,
         });
+        if (newValue) {
+            setFilterParams({
+                ...filterParams,
+                rarity: filterParams.rarity + paramValue + '|'
+            });
+        } else {
+            setFilterParams({
+                ...filterParams,
+                rarity: filterParams.rarity.replace( paramValue + '|', '')
+            });
+        }
     }
 
     return (
@@ -34,6 +49,7 @@ const RarityFilter = () => {
                 name="common"
                 filter={rarityFilter.common}
                 changeHandler={handleChange}
+                value="common"
             />
             <FilterButton
                 iconImage={Uncommon}
@@ -41,6 +57,7 @@ const RarityFilter = () => {
                 name="uncommon"
                 filter={rarityFilter.uncommon}
                 changeHandler={handleChange}
+                value="uncommon"
             />
             <FilterButton
                 iconImage={Rare}
@@ -48,6 +65,7 @@ const RarityFilter = () => {
                 name="rare"
                 filter={rarityFilter.rare}
                 changeHandler={handleChange}
+                value="rare"
             />
             <FilterButton
                 iconImage={Mythic}
@@ -55,6 +73,7 @@ const RarityFilter = () => {
                 name="mythic"
                 filter={rarityFilter.mythic}
                 changeHandler={handleChange}
+                value="mythic"
             />
         </div>
     );

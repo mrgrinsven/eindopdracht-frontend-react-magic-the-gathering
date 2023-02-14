@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+import {CardParamsContext} from '../../context/CardParamsContext';
 
 import './ColorFilter.css';
 
@@ -9,25 +10,38 @@ import BlueMana from '../../assets/blue-mana.png';
 import BlackMana from '../../assets/black-mana.png';
 import RedMana from '../../assets/red-mana.png';
 import GreenMana from '../../assets/green-mana.png';
-import ColorlessMana from '../../assets/colorless-mana.png';
+
 
 const ColorFilter = () => {
+    const {filterParams, setFilterParams} = useContext(CardParamsContext);
+
     const [colorFilter, setColorFilter] = useState({
         white: false,
         blue: false,
         black: false,
         red: false,
         green: false,
-        colorless: false,
     });
 
-    function  handleChange(event) {
+    function handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.checked;
+        const paramValue = event.target.value;
         setColorFilter({
             ...colorFilter,
             [changedFieldName]: newValue,
         });
+        if (newValue) {
+            setFilterParams({
+                ...filterParams,
+                colorIdentity: filterParams.colorIdentity + paramValue + ',',
+            });
+        } else {
+            setFilterParams({
+                ...filterParams,
+                colorIdentity: filterParams.colorIdentity.replace( paramValue + ',', ''),
+            });
+        }
     }
 
     return (
@@ -38,6 +52,7 @@ const ColorFilter = () => {
                 name="white"
                 filter={colorFilter.white}
                 changeHandler={handleChange}
+                value="W"
             />
             <FilterButton
                 iconImage={BlueMana}
@@ -45,6 +60,7 @@ const ColorFilter = () => {
                 name="blue"
                 filter={colorFilter.blue}
                 changeHandler={handleChange}
+                value="U"
             />
             <FilterButton
                 iconImage={BlackMana}
@@ -52,6 +68,7 @@ const ColorFilter = () => {
                 name="black"
                 filter={colorFilter.black}
                 changeHandler={handleChange}
+                value="B"
             />
             <FilterButton
                 iconImage={RedMana}
@@ -59,6 +76,7 @@ const ColorFilter = () => {
                 name="red"
                 filter={colorFilter.red}
                 changeHandler={handleChange}
+                value="R"
             />
             <FilterButton
                 iconImage={GreenMana}
@@ -66,13 +84,7 @@ const ColorFilter = () => {
                 name="green"
                 filter={colorFilter.green}
                 changeHandler={handleChange}
-            />
-            <FilterButton
-                iconImage={ColorlessMana}
-                id="colorless-mana"
-                name="colorless"
-                filter={colorFilter.colorless}
-                changeHandler={handleChange}
+                value="G"
             />
         </div>
     );

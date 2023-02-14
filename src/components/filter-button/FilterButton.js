@@ -2,7 +2,7 @@ import React from 'react';
 
 import './FilterButton.css'
 
-const FilterButton = ({iconImage, id, name, filter, changeHandler, text, padding}) => {
+const FilterButton = ({iconImage, id, name, filter, changeHandler, value, text, padding}) => {
     return (
         <>
             <label
@@ -25,6 +25,7 @@ const FilterButton = ({iconImage, id, name, filter, changeHandler, text, padding
                 name={name}
                 checked={filter}
                 onChange={changeHandler}
+                value={value}
             />
         </>
     );

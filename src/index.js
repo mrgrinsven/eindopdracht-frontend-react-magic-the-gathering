@@ -5,15 +5,15 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom';
 
 import './index.css';
-import CardDataContextProvider from './context/CardDataContext';
+import CardParamsContextProvider from './context/CardParamsContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Router>
-            <CardDataContextProvider>
+            <CardParamsContextProvider>
                 <App/>
-            </CardDataContextProvider>
+            </CardParamsContextProvider>
         </Router>
     </React.StrictMode>
 );
