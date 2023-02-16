@@ -33,7 +33,8 @@
     color: black;
     background-color: white;
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     padding: 10px;
     width: 40px;
     border: 1px solid black;
@@ -53,4 +54,13 @@
 
 .deck-button:active {
     transform: translateY(2px);
+    color: gray;
+}
+
+.deck-button:disabled {
+    background-color: lightgray;
+}
+
+.deck-button:active:disabled {
+    transform: translateY(0px);
 }

@@ -29,12 +29,12 @@ const TypeFilter = () => {
         if (newValue) {
             setFilterParams({
                 ...filterParams,
-                types: filterParams.types + paramValue + '|'
+                types: filterParams.types + paramValue + ','
             });
         } else {
             setFilterParams({
                 ...filterParams,
-                types: filterParams.types.replace( paramValue + '|', '')
+                types: filterParams.types.replace( paramValue + ',', '')
             });
         }
     }

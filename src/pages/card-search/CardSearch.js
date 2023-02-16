@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState} from 'react';
-import axios from 'axios';
+import React, {useContext} from 'react';
+
 
 import './CardSearch.css';
 
@@ -22,6 +22,10 @@ const CardSearch = () => {
                                     <Card
                                         cardImage={card.imageUrl}
                                         key={card.id}
+                                        cardId={card.id}
+                                        cardInfo={card}
+                                        cardName={card.name}
+                                        supertypes={card.supertypes}
                                     />
                                 );
                             })}
