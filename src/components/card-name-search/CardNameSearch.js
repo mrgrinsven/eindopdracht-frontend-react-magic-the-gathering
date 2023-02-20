@@ -29,7 +29,7 @@ const CardNameSearch = () => {
                     name="card-name-search"
                     placeholder="Search by Card Name"
                     onChange={handleChange}
-                    onKeyUp={event => event.key === 'Enter' && paramsNameSearch() & event.target.blur()}
+                    onKeyUp={event => event.key === 'Enter' && paramsNameSearch() && event.target.blur()}
                     value={nameParams.name}
                 />
                 <button

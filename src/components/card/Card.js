@@ -4,7 +4,7 @@ import {DeckContext} from '../../context/DeckContext';
 import './Card.css'
 
 const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
-    const {deckList, setDeckList} = useContext(DeckContext)
+    const {deckList, setDeckList, selectedDeck} = useContext(DeckContext)
 
     function addOne() {
         if (cardName in deckList) {
@@ -91,7 +91,7 @@ const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
     }
 
     return (
-        <div className="card-container">
+        <div className={`card-container ${window.location.pathname === '/deck' ? (supertypes ? (supertypes.includes('Basic')? 'basic-land' : null) : null ) : null }`}>
             <img
                 className="card-image"
                 src={cardImage}
@@ -99,7 +99,8 @@ const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
             <div className="button-container">
                 <button
                     className="subtract-deck-button deck-button"
-                    disabled={false}
+                    type="button"
+                    disabled={!(cardName in deckList)}
                     onClick={subtractOne}
                 >
                     -
@@ -109,7 +110,8 @@ const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
                 </div>
                 <button
                     className="add-deck-button deck-button"
-                    disabled={supertypes ? (cardName in deckList && supertypes.includes('Basic') ? deckList[cardName].totalCardCount >= 99 : false) : (cardName in deckList? deckList[cardName].totalCardCount >= 4 : false)}
+                    type="button"
+                    disabled={selectedDeck === 'none' ? true : supertypes ? (cardName in deckList && supertypes.includes('Basic') ? deckList[cardName].totalCardCount >= 99 : false) : (cardName in deckList? deckList[cardName].totalCardCount >= 4 : false)}
                     onClick={() => {addOne();
                         console.log(deckList)}}
                 >

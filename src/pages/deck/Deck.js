@@ -4,12 +4,14 @@ import {DeckContext} from '../../context/DeckContext';
 import './Deck.css'
 
 import Card from '../../components/card/Card';
+import DeckManagement from '../../components/deck-management/DeckManagement';
 
 const Deck = () => {
     const {deckList} = useContext(DeckContext)
 
     return (
-        <div className="cards-container">
+        <div className="deck-cards-container">
+            <DeckManagement/>
             {Object.keys(deckList).length > 0  &&
                 <>
                     {Object.keys(deckList).map((cardNames) => {
@@ -18,6 +20,7 @@ const Deck = () => {
                             Object.keys(deckList[cardNames].cardIds).map((card) => {
                                 return (
                                     <Card
+                                        className={cardKeys[card].cardData.supertypes? (cardKeys[card].cardData.supertypes.includes('Basic')? 'basic-land' : null) : null }
                                         cardImage={cardKeys[card].cardData.imageUrl}
                                         key={cardKeys[card].cardData.id}
                                         cardId={cardKeys[card].cardData.id}

@@ -64,3 +64,7 @@
 .deck-button:active:disabled {
     transform: translateY(0px);
 }
+
+.basic-land {
+    order: -1;
+}

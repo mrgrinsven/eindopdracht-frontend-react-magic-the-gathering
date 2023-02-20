@@ -11,7 +11,7 @@ import CardNameSearch from '../card-name-search/CardNameSearch';
 import ArtistFilter from '../artist-filter/ArtistFilter';
 import SetFilter from '../set-filter/SetFilter';
 import PowerToughnessFilter from '../power-toughness-filter/PowerToughnessFilter';
-
+import DeckManagement from '../deck-management/DeckManagement';
 
 
 const CardFilters = () => {
@@ -22,29 +22,32 @@ const CardFilters = () => {
     }
 
     return (
-        <div className="filter-container">
-            <CardNameSearch/>
-            <div className="button-filter-container">
-                <ColorFilter/>
-                <TypeFilter/>
-                <ManaCostFilter/>
-                <RarityFilter/>
-                <div>
-                    <ArtistFilter/>
-                    <SetFilter/>
-                    <PowerToughnessFilter/>
+        <>
+            <div className="filter-container">
+                <CardNameSearch/>
+                <div className="button-filter-container">
+                    <ColorFilter/>
+                    <TypeFilter/>
+                    <ManaCostFilter/>
+                    <RarityFilter/>
+                    <div>
+                        <ArtistFilter/>
+                        <SetFilter/>
+                        <PowerToughnessFilter/>
+                    </div>
+
                 </div>
 
+                <button
+                    id="filter-search-button"
+                    type="button"
+                    onClick={paramsFilterSearch}
+                >
+                    filter search
+                </button>
             </div>
-
-            <button
-                id="filter-search-button"
-                type="button"
-                onClick={paramsFilterSearch}
-            >
-                filter search
-            </button>
-        </div>
+            <DeckManagement/>
+        </>
     );
 };
 
