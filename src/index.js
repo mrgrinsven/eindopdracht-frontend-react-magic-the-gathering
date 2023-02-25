@@ -7,16 +7,19 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import './index.css';
 import CardParamsContextProvider from './context/CardParamsContext';
 import DeckContextProvider from './context/DeckContext';
+import AuthContextProvider from './context/AuthContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Router>
-            <CardParamsContextProvider>
-                <DeckContextProvider>
-                    <App/>
-                </DeckContextProvider>
-            </CardParamsContextProvider>
+            <AuthContextProvider>
+                <CardParamsContextProvider>
+                    <DeckContextProvider>
+                        <App/>
+                    </DeckContextProvider>
+                </CardParamsContextProvider>
+            </AuthContextProvider>
         </Router>
     </React.StrictMode>
 );

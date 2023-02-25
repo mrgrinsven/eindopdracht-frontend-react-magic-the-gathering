@@ -5,7 +5,6 @@ import {DeckContext} from "../../context/DeckContext";
 
 const DeckManagement = () => {
     const {
-        deckList,
         setDeckList,
         savedDeckList,
         setSavedDeckList,

@@ -40,3 +40,11 @@ code {
   min-width: 1280px;
   max-width: 1920px;
 }
+
+.page-link {
+  color: inherit;
+}
+
+.page-link:visited {
+  color: inherit;
+}

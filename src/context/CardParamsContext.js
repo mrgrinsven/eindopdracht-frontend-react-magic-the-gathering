@@ -28,13 +28,13 @@ const CardParamsContextProvider = ({children}) => {
     });
 
     useEffect(() => {
-        const controller = new AbortController();
+        const cardController = new AbortController();
 
         async function getCardList() {
             try {
                 const result = await axios.get(URI, {
                     params: searchParams,
-                    signal: controller.signal,
+                    signal: cardController.signal,
                 });
                 console.log(result)
                 setCardList(result.data.cards)
@@ -46,7 +46,7 @@ const CardParamsContextProvider = ({children}) => {
         getCardList();
 
         return function cleanup() {
-            controller.abort();
+            cardController.abort();
         }
     }, [searchParams]);
 

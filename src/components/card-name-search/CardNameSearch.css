@@ -37,6 +37,7 @@
     font-size: 8px;
     font-weight: bold;
 }
+
 .name-search-button:hover {
     cursor: pointer;
     background-color: ghostwhite;
