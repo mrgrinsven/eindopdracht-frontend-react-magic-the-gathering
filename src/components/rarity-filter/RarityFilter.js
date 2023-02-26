@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 
 import './RarityFilter.css';
 
@@ -11,14 +11,7 @@ import Mythic from '../../assets/mythic.png';
 import {CardParamsContext} from '../../context/CardParamsContext';
 
 const RarityFilter = () => {
-    const {filterParams, setFilterParams} = useContext(CardParamsContext);
-
-    const [rarityFilter, setRarityFilter] = useState({
-        common: false,
-        uncommon: false,
-        rare: false,
-        mythic: false,
-    });
+    const {filterParams, setFilterParams, rarityFilter, setRarityFilter} = useContext(CardParamsContext);
 
     function  handleChange(event) {
         const changedFieldName = event.target.name;

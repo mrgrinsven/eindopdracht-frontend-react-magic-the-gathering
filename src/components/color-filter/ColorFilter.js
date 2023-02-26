@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useContext} from 'react';
 import {CardParamsContext} from '../../context/CardParamsContext';
 
 import './ColorFilter.css';
@@ -13,15 +13,7 @@ import GreenMana from '../../assets/green-mana.png';
 
 
 const ColorFilter = () => {
-    const {filterParams, setFilterParams} = useContext(CardParamsContext);
-
-    const [colorFilter, setColorFilter] = useState({
-        white: false,
-        blue: false,
-        black: false,
-        red: false,
-        green: false,
-    });
+    const {filterParams, setFilterParams, colorFilter, setColorFilter} = useContext(CardParamsContext);
 
     function handleChange(event) {
         const changedFieldName = event.target.name;

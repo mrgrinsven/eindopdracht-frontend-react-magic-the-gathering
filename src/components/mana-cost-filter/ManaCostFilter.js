@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {CardParamsContext} from '../../context/CardParamsContext'
 
 import './ManaCostFilter.css';
@@ -19,23 +19,7 @@ import ManaCost10 from '../../assets/10.png';
 import ManaCostX from '../../assets/X.png';
 
 const ManaCostFilter = () => {
-        const {filterParams, setFilterParams} = useContext(CardParamsContext)
-
-        const [manaFilter, setManaFilter] = useState({
-                cost0: false,
-                cost1: false,
-                cost2: false,
-                cost3: false,
-                cost4: false,
-                cost5: false,
-                cost6: false,
-                cost7: false,
-                cost8: false,
-                cost9: false,
-                cost10: false,
-                costx: false,
-                previous: '',
-        });
+        const {filterParams, setFilterParams, manaFilter, setManaFilter} = useContext(CardParamsContext)
 
         function handleChange(event) {
                 const changedFieldName = event.target.name;

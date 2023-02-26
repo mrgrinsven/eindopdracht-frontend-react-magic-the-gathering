@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import axios from "axios";
+import axios from 'axios';
 
 import './Register.css'
 
@@ -10,7 +10,7 @@ const Register = () => {
     const [password, setPassword] = useState('');
 
     const [error, toggleError] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState('');
     const [loading, toggleLoading] = useState(false);
 
     const navigate = useNavigate();
@@ -46,13 +46,15 @@ const Register = () => {
                 });
                 navigate('/login')
             } catch (e) {
-                setErrorMessage(e.response.data.message)
-                console.log(e.response)
-                console.error(e);
+                if (e.response.data.message) {
+                    setErrorMessage(e.response.data.message);
+                } else {
+                    setErrorMessage('Server error please try again later');
+                    console.error(e)
+                }
                 toggleError(true);
             }
         }
-
 
         toggleLoading(false);
     }
@@ -135,7 +137,6 @@ const Register = () => {
                 <p>Already have an account? <Link className="page-link" to="/login">Login here.</Link></p>
             </div>
         </div>
-    );
-};
+    );};
 
 export default Register;

@@ -15,10 +15,11 @@ import DeckManagement from '../deck-management/DeckManagement';
 
 
 const CardFilters = () => {
-    const {setSearchParams, filterParams} = useContext(CardParamsContext);
+    const {setSearchParams, filterParams, toggleActivateSearch} = useContext(CardParamsContext);
 
     function paramsFilterSearch() {
-        setSearchParams(filterParams)
+        toggleActivateSearch(true);
+        setSearchParams(filterParams);
     }
 
     return (

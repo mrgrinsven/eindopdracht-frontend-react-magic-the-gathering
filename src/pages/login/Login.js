@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
-import {AuthContext} from '../../context/AuthContext';
 import axios from 'axios';
 
 import './Login.css'
+
+import {AuthContext} from '../../context/AuthContext';
 
 const Login = () => {
     const {login} = useContext(AuthContext);
@@ -12,6 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
 
     const [error, toggleError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const [loading, toggleLoading] = useState(false);
 
     const loginController = new AbortController();
@@ -19,7 +21,6 @@ const Login = () => {
     useEffect(() => {
         return function cleanup() {
             loginController.abort();
-            console.log('unmount')
         }
     },[]);
 
@@ -28,21 +29,33 @@ const Login = () => {
         toggleError(false);
         toggleLoading(true);
 
-        try {
-            const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
-                username: user,
-                password: password,
-            }, {
-                signal: loginController.signal
-            });
+        if (!user || !password) {
+            toggleError(true)
+            setErrorMessage('Please fill in all fields')
+        } else if (user.length < 6 || password.length < 6) {
+            toggleError(true)
+            setErrorMessage('Incorrect username or password')
+        } else {
+            try {
+                const result = await axios.post('https://frontend-educational-backend.herokuapp.com/api/auth/signin', {
+                    username: user,
+                    password: password,
+                }, {
+                    signal: loginController.signal
+                });
 
-            console.log(result.data);
+                login(result.data.accessToken);
 
-            login(result.data.accessToken);
+            } catch (e) {
+                if (e.code === 'ERR_BAD_REQUEST') {
+                    setErrorMessage('Incorrect username or password')
+                } else {
+                    setErrorMessage('Server error please try again later')
+                    console.error(e)
+                }
 
-        } catch (e) {
-            console.error(e);
-            toggleError(true);
+                toggleError(true);
+            }
         }
         toggleLoading(false);
     }
@@ -53,8 +66,6 @@ const Login = () => {
         <div className="login-container">
             <h1>Login</h1>
 
-
-            <p>Fill in your username and password</p>
             <form
                 onSubmit={handlePassword}
                 className="login-form"
@@ -93,7 +104,7 @@ const Login = () => {
                 </label>
 
                 {error &&
-                    <p className='password-warning'>Incorrect email or password</p>
+                    <p className='password-warning'>{errorMessage}</p>
                 }
                 {loading &&
                     <p>Loading...</p>

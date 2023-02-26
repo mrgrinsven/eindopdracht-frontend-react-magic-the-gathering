@@ -13,3 +13,23 @@
     flex-wrap: wrap;
     gap: 5px;
 }
+
+.login-message {
+    padding: 40px;
+    text-align: center;
+}
+
+.redirect-link {
+    text-decoration: underline;
+    text-transform: uppercase;
+    color: white;
+    padding: 10px;
+}
+
+.search-result-message {
+    margin-top: 60px;
+}
+
+.search-result-error {
+    color: red;
+}

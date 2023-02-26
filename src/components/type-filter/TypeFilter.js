@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 
 import './TypeFilter.css'
 
@@ -6,17 +6,7 @@ import FilterButton from '../filter-button/FilterButton';
 import {CardParamsContext} from '../../context/CardParamsContext';
 
 const TypeFilter = () => {
-    const {filterParams, setFilterParams} = useContext(CardParamsContext);
-
-    const [typeFilter, setTypeFilter] = useState({
-        creature: false,
-        artifact: false,
-        instant: false,
-        sorcery: false,
-        land: false,
-        enchantment: false,
-        planeswalker: false,
-    });
+    const {filterParams, setFilterParams, typeFilter, setTypeFilter} = useContext(CardParamsContext);
 
     function  handleChange(event) {
         const changedFieldName = event.target.name;

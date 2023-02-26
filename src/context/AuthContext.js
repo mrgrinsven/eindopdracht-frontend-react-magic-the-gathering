@@ -1,6 +1,7 @@
 import {createContext, useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+
 import tokenValidation from '../helpers/tokenValidation';
 
 export const AuthContext = createContext({});
@@ -22,7 +23,10 @@ function AuthContextProvider({children}) {
         if (token && tokenValidation(token)) {
             void fetchUserData(token);
         } else {
-            localStorage.removeItem('token')
+            if (token) {
+                localStorage.removeItem('token')
+            }
+
             setAuth({
                 isAuth: false,
                 user: null,
@@ -60,9 +64,12 @@ function AuthContextProvider({children}) {
                 navigate(redirectUrl);
             }
 
-            console.log(response);
         } catch (e) {
-            console.error(e)
+            if (e.code === 'ERR_CANCELED') {
+                console.log('controller successfully aborted')
+            } else {
+                console.error(e);
+            }
             setAuth({
                 isAuth: false,
                 user: null,
@@ -75,7 +82,7 @@ function AuthContextProvider({children}) {
         localStorage.setItem('token', jwt)
 
         void fetchUserData(jwt, '/')
-        console.log("De gebruiker is ingelogd 🔓")
+        console.log("User has successfully logged in 🔓")
     }
 
     function logout() {
@@ -86,7 +93,8 @@ function AuthContextProvider({children}) {
             status: 'done'
         });
         navigate('/');
-        console.log("De gebruiker is uitgelogd 🔒")
+        navigate(0);
+        console.log("User has successfully logged out 🔒")
     }
 
     const contextData = {

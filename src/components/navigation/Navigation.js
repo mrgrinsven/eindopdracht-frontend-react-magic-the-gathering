@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import './Navigation.css'
 
+import {AuthContext} from '../../context/AuthContext';
+
 const Navigation = ({children}) => {
+    const {logout, isAuth, user} = useContext(AuthContext);
     return (
         <nav>
             <ul className="nav-list">
@@ -15,10 +18,31 @@ const Navigation = ({children}) => {
                 </li>
                 {children}
                 <li>
-                    <NavLink className="nav-link" to="/deck">deck</NavLink>
+                    {!isAuth &&
+                        <NavLink className="nav-link" to="/register">register</NavLink>
+                    }
+                    {isAuth &&
+                        <NavLink className="nav-link" to="/deck">deck</NavLink>
+                    }
                 </li>
                 <li>
-                    <NavLink className="nav-link" to="/login">login</NavLink>
+                    {!isAuth &&
+                        <NavLink className="nav-link" to="/login">login</NavLink>
+                    }
+                    {isAuth &&
+                        <p
+                            className="nav-username"
+                        >
+                            USER: {user.username}
+                            <span
+                                className="logout-link"
+                                onClick={logout}
+                            >
+                                (logout)
+                            </span>
+                        </p>
+                    }
+
                 </li>
             </ul>
         </nav>
