@@ -16,25 +16,19 @@ function AuthContextProvider({children}) {
 
     const navigate = useNavigate();
 
-    const authController = new AbortController();
-
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token && tokenValidation(token)) {
-            void fetchUserData(token);
+            fetchUserData(token);
         } else {
             if (token) {
                 localStorage.removeItem('token')
             }
-
             setAuth({
                 isAuth: false,
                 user: null,
                 status: 'done',
             });
-            return function cleanup() {
-                authController.abort();
-            }
         }
     }, []);
 
@@ -45,8 +39,7 @@ function AuthContextProvider({children}) {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
-                },
-                signal: authController.signal
+                }
             })
 
             setAuth({

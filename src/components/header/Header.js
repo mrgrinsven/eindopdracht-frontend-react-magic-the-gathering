@@ -8,7 +8,7 @@ import Navigation from "../navigation/Navigation";
 
 const Header = () => {
     return (
-        <div className="inner-container">
+        <div className="inner-container" id="header">
             <Navigation>
                 <div className="header-container">
                     <div className="image-container">

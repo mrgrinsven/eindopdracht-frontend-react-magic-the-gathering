@@ -33,14 +33,17 @@ code {
   flex-direction: row;
   justify-content: center;
   min-width: 360px;
+  width: 100vw;
 }
 
 .inner-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 768px;
-  max-width: 80vw;
+  min-width: 668px;
+  max-width: 3840px;
+  margin: 0 100px;
+  width: 90%;
 }
 
 .page-link {

@@ -55,6 +55,7 @@ const CardParamsContextProvider = ({children}) => {
 
     const [searchParams, setSearchParams] = useState({
         contains: 'imageUrl',
+        page: 1,
     });
     const [filterParams, setFilterParams] = useState({
         artist: '',
@@ -67,6 +68,7 @@ const CardParamsContextProvider = ({children}) => {
         rarity: '',
         text: '',
         contains: 'imageUrl',
+        page: 1,
     });
 
     const [nameParams, setNameParams] = useState({
@@ -78,6 +80,8 @@ const CardParamsContextProvider = ({children}) => {
     const [paramError, toggleParamError] = useState(false);
     const [paramErrorMessage, setParamErrorMessage] = useState('');
     const [paramLoading, toggleParamLoading] = useState(false);
+
+    const [pageCount, setPageCount] = useState(1);
 
     useEffect(() => {
         const cardController = new AbortController();
@@ -91,11 +95,14 @@ const CardParamsContextProvider = ({children}) => {
                     params: searchParams,
                     signal: cardController.signal,
                 });
-                console.log(result.data.cards)
+                setPageCount(Math.floor(result.headers['total-count'] / 100))
                 setCardList(result.data.cards)
             } catch (e) {
+                console.log(e)
                 if (e.code === 'ERR_CANCELED') {
                     console.log('controller successfully aborted')
+                } else if (e.code === 'ERR_NETWORK') {
+                    setParamErrorMessage('We are temporarily offline for maintenance. Please try again later')
                 } else {
                     console.error(e);
                     setParamErrorMessage('Something went wrong please try again')
@@ -120,7 +127,6 @@ const CardParamsContextProvider = ({children}) => {
             value={{
                 filterParams, setFilterParams,
                 nameParams, setNameParams,
-                cardList, setSearchParams,
                 colorFilter, setColorFilter,
                 typeFilter, setTypeFilter,
                 manaFilter, setManaFilter,
@@ -128,7 +134,10 @@ const CardParamsContextProvider = ({children}) => {
                 activateSearch, toggleActivateSearch,
                 paramError, toggleParamError,
                 paramErrorMessage, setParamErrorMessage,
-                paramLoading, toggleParamLoading
+                paramLoading, toggleParamLoading,
+                pageCount, setPageCount,
+                searchParams, setSearchParams,
+                cardList,
             }}
         >
             {children}

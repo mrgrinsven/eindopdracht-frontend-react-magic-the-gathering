@@ -1,16 +1,21 @@
 import React, {useContext, useState} from 'react';
 
 import './DeckManagement.css'
-import {DeckContext} from "../../context/DeckContext";
+
+import {DeckContext} from '../../context/DeckContext';
+import {CardParamsContext} from '../../context/CardParamsContext';
 
 const DeckManagement = () => {
     const {
+        deckList,
         setDeckList,
         savedDeckList,
         setSavedDeckList,
         selectedDeck,
-        setSelectedDeck
+        setSelectedDeck,
     } = useContext(DeckContext)
+
+    const {pageCount, searchParams, setSearchParams} = useContext(CardParamsContext);
 
     const [deckAction, setDeckAction] = useState('current');
     const [createDeckName, setCreateDeckName] = useState('');
@@ -38,7 +43,7 @@ const DeckManagement = () => {
             setDeckList(JSON.parse(localStorage.getItem(selectDeckOptions)));
             setDeckAction('current');
         } else if (event.target.name === 'delete') {
-            setSavedDeckList(savedDeckList.filter(decks =>  decks !== selectedDeck));
+            setSavedDeckList(savedDeckList.filter(decks => decks !== selectedDeck));
             setDeckList({});
             localStorage.removeItem(selectedDeck)
             setSelectedDeck('none');
@@ -58,47 +63,77 @@ const DeckManagement = () => {
         setCreateDeckName(newValue);
     }
 
+    function pageHandler(event) {
+        if (event.target.value === 'first') {
+            setSearchParams({
+                ...searchParams,
+                page: 1,
+            });
+        }
+        if (event.target.value === 'previous') {
+            setSearchParams({
+                ...searchParams,
+                page: searchParams.page - 1,
+            });
+        }
+        if (event.target.value === 'next') {
+            setSearchParams({
+                ...searchParams,
+                page: searchParams.page + 1,
+            });
+        }
+        if (event.target.value === 'last') {
+            setSearchParams({
+                ...searchParams,
+                page: pageCount,
+            });
+        }
+    }
+
     return (
         <div className="deck-management-container">
-            <button
-                className="deck-management-button"
-                type="button"
-                value="create"
-                onClick={deckActionHandler}
-            >
-                Create New Deck
-            </button>
-            <button
-                className="deck-management-button"
-                type="button"
-                value="load"
-                disabled={savedDeckList.length === 0}
-                onClick={deckActionHandler}
-            >
-                Load Deck
-            </button>
+            <div className="deck-management-button-container">
+                <button
+                    className="deck-management-button"
+                    type="button"
+                    value="create"
+                    onClick={deckActionHandler}
+                >
+                    Create New Deck
+                </button>
+                <button
+                    className="deck-management-button"
+                    type="button"
+                    value="load"
+                    disabled={savedDeckList.length === 0}
+                    onClick={deckActionHandler}
+                >
+                    Load Deck
+                </button>
 
-            <button
-                className="deck-management-button"
-                type="button"
-                value="delete"
-                disabled={savedDeckList.length === 0 || selectedDeck === 'none'}
-                onClick={deckActionHandler}
-            >
-                Delete Deck
-            </button>
+                <button
+                    className="deck-management-button"
+                    type="button"
+                    value="delete"
+                    disabled={savedDeckList.length === 0 || selectedDeck === 'none'}
+                    onClick={deckActionHandler}
+                >
+                    Delete Deck
+                </button>
+            </div>
 
             {deckAction === 'current' &&
                 <>
-                    <div>
-                        <p>Current deck: {selectedDeck}</p>
+                    <div className="deck-management-info-container">
+                        <p><strong>Current deck:</strong> {selectedDeck}</p>
+                        <p> <strong>Cards in deck:</strong> {Object.values(deckList).reduce((acc, curr) => (acc = acc + curr['totalCardCount']), 0)}</p>
                     </div>
                 </>
             }
 
             {deckAction === 'create' &&
                 <>
-                    <div>
+                    <div className="deck-management-action-container">
                         <label htmlFor="create-deck-name-field"></label>
                         <input
                             className="create-deck-name-field"
@@ -137,7 +172,7 @@ const DeckManagement = () => {
 
             {deckAction === 'load' &&
                 <>
-                    <div>
+                    <div className="deck-management-action-container">
                         <label htmlFor="load-deck">Select Deck</label>
                         <select
                             name="load-deck"
@@ -160,8 +195,8 @@ const DeckManagement = () => {
                                     })}
                                 </>
                             }
-
                         </select>
+
                         <button
                             className="deck-management-button"
                             type="button"
@@ -170,6 +205,7 @@ const DeckManagement = () => {
                             onClick={deckActionHandler}
                         >load
                         </button>
+
                         <button
                             className="deck-management-button"
                             type="button"
@@ -185,29 +221,85 @@ const DeckManagement = () => {
 
             {deckAction === 'delete' &&
                 <>
-                    <div>
-                        <p>Are you sure?
-                            <button
-                                className="deck-management-button"
-                                type="button"
-                                name="delete"
-                                onClick={deckActionHandler}
-                            >
-                                delete
-                            </button>
-                            <button
-                                className="deck-management-button"
-                                type="button"
-                                value="current"
-                                onClick={deckActionHandler}
-                            >
-                                cancel
-                            </button>
-                        </p>
+                    <div className="deck-management-action-container">
+                        <p>Are you sure?</p>
+                        <button
+                            className="deck-management-button"
+                            type="button"
+                            name="delete"
+                            onClick={deckActionHandler}
+                        >
+                            delete
+                        </button>
+                        <button
+                            className="deck-management-button"
+                            type="button"
+                            value="current"
+                            onClick={deckActionHandler}
+                        >
+                            cancel
+                        </button>
                     </div>
                 </>
             }
+            <div className="page-management-container">
+                {window.location.pathname === '/card-search' &&
+                    <>
+                        <button
+                            type="button"
+                            className="previous-button deck-management-button"
+                            value="first"
+                            disabled={searchParams.page === 1 || pageCount === 1}
+                            onClick={pageHandler}
+                        >
+                            first page
+                        </button>
 
+                        <button
+                            type="button"
+                            className="previous-button deck-management-button"
+                            value="previous"
+                            disabled={searchParams.page === 1 || pageCount === 1}
+                            onClick={pageHandler}
+                        >
+                            previous page
+                        </button>
+                    </>
+                }
+
+                <button
+                    type="button"
+                    className="deck-management-button"
+                    onClick={() => window.scrollTo({top: 0, behavior: "smooth"})}
+                >
+                    back to top
+                </button>
+
+                {window.location.pathname === '/card-search' &&
+                    <>
+                        <button
+                            type="button"
+                            className="next-button deck-management-button"
+                            value="next"
+                            disabled={searchParams.page === pageCount || pageCount === 1}
+                            onClick={pageHandler}
+                        >
+                            next page
+                        </button>
+
+                        <button
+                            type="button"
+                            className="next-button deck-management-button"
+                            value="last"
+                            disabled={searchParams.page === pageCount || pageCount === 1}
+                            onClick={pageHandler}
+                        >
+                            last page
+                        </button>
+                    </>
+                }
+
+            </div>
         </div>
     );
 };

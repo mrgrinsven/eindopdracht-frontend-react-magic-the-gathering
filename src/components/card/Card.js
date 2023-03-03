@@ -112,8 +112,7 @@ const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
                     className="add-deck-button deck-button"
                     type="button"
                     disabled={selectedDeck === 'none' ? true : supertypes ? (cardName in deckList && supertypes.includes('Basic') ? deckList[cardName].totalCardCount >= 99 : false) : (cardName in deckList? deckList[cardName].totalCardCount >= 4 : false)}
-                    onClick={() => {addOne();
-                        console.log(deckList)}}
+                    onClick={addOne}
                 >
                     +
                 </button>

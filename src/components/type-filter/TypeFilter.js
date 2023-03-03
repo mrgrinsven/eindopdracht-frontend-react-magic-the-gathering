@@ -48,6 +48,14 @@ const TypeFilter = () => {
                 value="artifact"
             />
             <FilterButton
+                id="land"
+                name="land"
+                filter={typeFilter.land}
+                changeHandler={handleChange}
+                text="land"
+                value="land"
+            />
+            <FilterButton
                 id="instant"
                 name="instant"
                 filter={typeFilter.instant}
@@ -62,14 +70,6 @@ const TypeFilter = () => {
                 changeHandler={handleChange}
                 text="Sorcery"
                 value="sorcery"
-            />
-            <FilterButton
-                id="land"
-                name="land"
-                filter={typeFilter.land}
-                changeHandler={handleChange}
-                text="land"
-                value="land"
             />
             <FilterButton
                 id="enchantment"

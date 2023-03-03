@@ -38,11 +38,11 @@ const Home = () => {
                                 <p>If you want search for cards proceed to the <NavLink
                                     className="get-started-link"
                                     to="/card-search"
-                                >card-search page</NavLink></p>
+                                >card-search page.</NavLink></p>
                                 <p>If you want to manage your deck proceed to the <NavLink
                                     className="get-started-link"
                                     to="/deck"
-                                >deck-management page</NavLink></p>
+                                >deck-management page.</NavLink></p>
                             </>
                         }
                     </article>

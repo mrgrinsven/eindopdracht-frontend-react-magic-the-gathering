@@ -11,6 +11,7 @@ const Deck = () => {
 
     return (
         <div className="inner-container">
+            <div className="deck-management-container-filler"></div>
             <DeckManagement/>
             <div className="deck-cards-container">
 

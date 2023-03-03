@@ -8,7 +8,7 @@ import {AuthContext} from '../../context/AuthContext';
 const Navigation = ({children}) => {
     const {logout, isAuth, user} = useContext(AuthContext);
     return (
-        <nav>
+        <nav id="nav">
             <ul className="nav-list">
                 <li>
                     <NavLink className="nav-link" to="/">home</NavLink>

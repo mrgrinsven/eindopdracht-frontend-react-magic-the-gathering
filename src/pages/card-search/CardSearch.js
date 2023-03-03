@@ -59,7 +59,7 @@ const CardSearch = () => {
                         }
 
                         {paramError &&
-                            <h3 className="search-result-message search-result-error">{paramErrorMessage}]</h3>
+                            <h3 className="search-result-message search-result-error">{paramErrorMessage}</h3>
                         }
                     </div>
                 </div>

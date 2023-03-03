@@ -15,7 +15,7 @@ import DeckManagement from '../deck-management/DeckManagement';
 
 
 const CardFilters = () => {
-    const {setSearchParams, filterParams, toggleActivateSearch} = useContext(CardParamsContext);
+    const {setSearchParams, filterParams, toggleActivateSearch, paramLoading} = useContext(CardParamsContext);
 
     function paramsFilterSearch() {
         toggleActivateSearch(true);
@@ -26,26 +26,39 @@ const CardFilters = () => {
         <>
             <div className="filter-container">
                 <CardNameSearch/>
+
                 <div className="button-filter-container">
-                    <ColorFilter/>
-                    <TypeFilter/>
-                    <ManaCostFilter/>
-                    <RarityFilter/>
-                    <div>
+                    <div className="section-filter-container">
+                        <ColorFilter/>
+                        <RarityFilter/>
+                    </div>
+
+                    <div className="section-filter-container">
+                        <TypeFilter/>
+                    </div>
+
+                    <div className="section-filter-container">
+                        <ManaCostFilter/>
+                    </div>
+
+                    <div className="section-filter-container">
                         <ArtistFilter/>
                         <SetFilter/>
                         <PowerToughnessFilter/>
                     </div>
-
                 </div>
 
-                <button
-                    id="filter-search-button"
-                    type="button"
-                    onClick={paramsFilterSearch}
-                >
-                    filter search
-                </button>
+                <div className="filer-search-button-container">
+                    <button
+                        id="filter-search-button"
+                        type="button"
+                        onClick={paramsFilterSearch}
+                        disabled={paramLoading}
+                    >
+                        filter search
+                    </button>
+                </div>
+
             </div>
             <DeckManagement/>
         </>

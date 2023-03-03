@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom";
 
 import './PageNotFound.css'
 
 const PageNotFound = () => {
     const navigate = useNavigate()
-    setTimeout(() => {
-        navigate('/')
-    }, 10000);
+
+    useEffect(() => {
+
+        setTimeout(() => {
+            navigate('/')
+        }, 10000);
+        return function cleanup() {
+            clearTimeout();
+        }
+    }, []);
 
     return (
         <div className="inner-container">

@@ -5,3 +5,11 @@
     flex-wrap: wrap;
     gap: 5px
 }
+
+.deck-management-container-filler {
+    height: 15px;
+    width: 100%;
+    background-color: lightgray;
+    border-radius: 15px 15px 0 0;
+    margin-top: 40px;
+}
