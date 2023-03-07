@@ -13,8 +13,10 @@ import GreenMana from '../../assets/green-mana.png';
 
 
 const ColorFilter = () => {
+    //context for filter search parameters and filter checkboxes
     const {filterParams, setFilterParams, colorFilter, setColorFilter} = useContext(CardParamsContext);
 
+    //handler for setting search parameters
     function handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.checked;

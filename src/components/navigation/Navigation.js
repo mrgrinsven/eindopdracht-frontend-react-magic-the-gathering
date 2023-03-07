@@ -6,6 +6,7 @@ import './Navigation.css'
 import {AuthContext} from '../../context/AuthContext';
 
 const Navigation = ({children}) => {
+    //context for logout authorization check and username
     const {logout, isAuth, user} = useContext(AuthContext);
     return (
         <nav id="nav">

@@ -7,6 +7,7 @@ import Card from '../../components/card/Card';
 import DeckManagement from '../../components/deck-management/DeckManagement';
 
 const Deck = () => {
+    //context for cards in deck
     const {deckList} = useContext(DeckContext)
 
     return (

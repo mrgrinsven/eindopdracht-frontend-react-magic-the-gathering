@@ -19,8 +19,10 @@ import ManaCost10 from '../../assets/10.png';
 import ManaCostX from '../../assets/X.png';
 
 const ManaCostFilter = () => {
+        //context for filter search parameters and filter checkboxes
         const {filterParams, setFilterParams, manaFilter, setManaFilter} = useContext(CardParamsContext)
 
+        //handler for setting search parameters
         function handleChange(event) {
                 const changedFieldName = event.target.name;
                 const newValue = event.target.checked;

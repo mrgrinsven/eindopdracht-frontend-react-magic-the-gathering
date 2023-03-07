@@ -8,8 +8,10 @@ export const CardParamsContext = createContext(null);
 const CardParamsContextProvider = ({children}) => {
     const URI = 'https://api.magicthegathering.io/v1/cards';
 
+    //context for authentication check
     const {isAuth} = useContext(AuthContext);
 
+    //useStates for search filter buttons
     const [colorFilter, setColorFilter] = useState({
         white: false,
         blue: false,
@@ -51,13 +53,17 @@ const CardParamsContextProvider = ({children}) => {
         mythic: false,
     });
 
+    //useState for card search results
     const [cardList, setCardList] = useState();
 
+    //useState for parameters search query
     const [searchParams, setSearchParams] = useState({
         contains: 'imageUrl',
         page: 1,
         pageSize: 70,
     });
+
+    //useState for filter settings
     const [filterParams, setFilterParams] = useState({
         artist: '',
         setName: '',
@@ -73,18 +79,20 @@ const CardParamsContextProvider = ({children}) => {
         pageSize: 70,
     });
 
+    //useState for card name search
     const [nameParams, setNameParams] = useState({
         name: '',
         contains: 'imageUrl',
     });
 
+    //UseStates for search functionality
     const [activateSearch, toggleActivateSearch] = useState(false);
     const [paramError, toggleParamError] = useState(false);
     const [paramErrorMessage, setParamErrorMessage] = useState('');
     const [paramLoading, toggleParamLoading] = useState(false);
-
     const [pageCount, setPageCount] = useState(1);
 
+    //useEffect for async function get request for card searches from the API
     useEffect(() => {
         const cardController = new AbortController();
 
@@ -97,7 +105,7 @@ const CardParamsContextProvider = ({children}) => {
                     params: searchParams,
                     signal: cardController.signal,
                 });
-                setPageCount(Math.floor(result.headers['total-count'] /70))
+                setPageCount(Math.floor(result.headers['total-count'] / 70))
                 setCardList(result.data.cards)
             } catch (e) {
                 console.log(e)

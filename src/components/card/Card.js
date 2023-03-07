@@ -4,8 +4,10 @@ import {DeckContext} from '../../context/DeckContext';
 import './Card.css'
 
 const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
+    //context for selected deck and cards in selected deck
     const {deckList, setDeckList, selectedDeck} = useContext(DeckContext)
 
+    //function to add a card to the selected deck
     function addOne() {
         if (cardName in deckList) {
             if (cardId in deckList[cardName].cardIds) {
@@ -55,6 +57,7 @@ const Card = ({cardImage, cardId, cardName, cardInfo, supertypes}) => {
         }
     }
 
+    //function to subtract a card from the selected deck
     function subtractOne() {
         if (cardName in deckList && deckList[cardName].totalCardCount - 1 > 0) {
             if (cardId in deckList[cardName].cardIds && deckList[cardName].cardIds[cardId].cardCount - 1 > 0) {

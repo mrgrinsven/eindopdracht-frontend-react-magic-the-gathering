@@ -6,6 +6,7 @@ import './Home.css'
 import {AuthContext} from '../../context/AuthContext';
 
 const Home = () => {
+    //context for authentication check and username
     const {isAuth, user} = useContext(AuthContext);
     return (
         <div className="inner-container">
@@ -20,16 +21,17 @@ const Home = () => {
                         <h3>{isAuth && <span>Hello {user.username}!</span>} Let's get started!</h3>
                         {!isAuth &&
                             <>
-                            <p>To make use of the card database and deck creation you need to have an account and log
-                                in.</p>
-                            <p>To start using the card database <NavLink
-                            className="page-link"
-                            to="/login"
-                            >log in here</NavLink>.</p>
-                            <p>If you do not have an account <NavLink
-                            className="page-link"
-                            to="/register"
-                            >register here</NavLink> first.</p>
+                                <p>To make use of the card database and deck creation you need to have an account and
+                                    log
+                                    in.</p>
+                                <p>To start using the card database <NavLink
+                                    className="page-link"
+                                    to="/login"
+                                >log in here</NavLink>.</p>
+                                <p>If you do not have an account <NavLink
+                                    className="page-link"
+                                    to="/register"
+                                >register here</NavLink> first.</p>
                             </>
                         }
 

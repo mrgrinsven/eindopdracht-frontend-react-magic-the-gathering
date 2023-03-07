@@ -6,13 +6,17 @@ import './ArtistFilter.css'
 import FilterTextField from '../filter-text-field/FilterTextField';
 
 const ArtistFilter = () => {
+    //context for filter search parameters
     const {filterParams, setFilterParams} = useContext(CardParamsContext);
+
+    //handler for setting search parameters
     function handleChange(event) {
         setFilterParams({
             ...filterParams,
             artist: event.target.value,
         });
     }
+
     return (
         <>
             <FilterTextField

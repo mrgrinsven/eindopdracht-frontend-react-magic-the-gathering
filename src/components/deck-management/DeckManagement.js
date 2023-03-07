@@ -6,6 +6,7 @@ import {DeckContext} from '../../context/DeckContext';
 import {CardParamsContext} from '../../context/CardParamsContext';
 
 const DeckManagement = () => {
+    //context for cards in deck, selected deck and deck names list
     const {
         deckList,
         setDeckList,
@@ -15,13 +16,16 @@ const DeckManagement = () => {
         setSelectedDeck,
     } = useContext(DeckContext)
 
+    //context for number of pages in results and parameter state for search get request
     const {pageCount, searchParams, setSearchParams} = useContext(CardParamsContext);
 
+    //useState for deck management functionality
     const [deckAction, setDeckAction] = useState('current');
     const [createDeckName, setCreateDeckName] = useState('');
     const [selectDeckOptions, setSelectDeckOptions] = useState(selectedDeck);
     const [deckNameError, setDeckNameError] = useState(false);
 
+    //handler for deck management actions
     function deckActionHandler(event) {
         const newValue = event.target.value
         if (event.target.name === 'create' || event.target.name === 'create-deck-name-field') {
@@ -58,11 +62,13 @@ const DeckManagement = () => {
         }
     }
 
+    //handler for setting deck name state
     function createDeckNameHandleChange(event) {
         const newValue = event.target.value
         setCreateDeckName(newValue);
     }
 
+    //handler for page navigation for search results
     function pageHandler(event) {
         if (event.target.value === 'first') {
             setSearchParams({

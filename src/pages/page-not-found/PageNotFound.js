@@ -6,6 +6,7 @@ import './PageNotFound.css'
 const PageNotFound = () => {
     const navigate = useNavigate()
 
+    //useEffect for page redirect
     useEffect(() => {
 
         setTimeout(() => {
@@ -14,6 +15,7 @@ const PageNotFound = () => {
         return function cleanup() {
             clearTimeout();
         }
+        // eslint-disable-next-line
     }, []);
 
     return (

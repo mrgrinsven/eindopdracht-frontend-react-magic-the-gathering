@@ -8,16 +8,19 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({children}) {
 
+    //useState for authorization check ans user details
     const [auth, setAuth] = useState({
         isAuth: false,
         user: null,
         status: 'pending'
     });
 
+    //useState for successful register indication
     const [successfulRegister, setSuccessfulRegister] = useState(false)
 
     const navigate = useNavigate();
 
+    //useEffect to validate authentication token
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (token && tokenValidation(token)) {
@@ -35,7 +38,7 @@ function AuthContextProvider({children}) {
         // eslint-disable-next-line
     }, []);
 
-
+    //async function for fetching user data from authentication token
     async function fetchUserData(token, redirectUrl) {
         try {
             const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user`, {
@@ -74,6 +77,7 @@ function AuthContextProvider({children}) {
         }
     }
 
+    //function for logging in
     function login(jwt) {
         localStorage.setItem('token', jwt)
 
@@ -81,6 +85,7 @@ function AuthContextProvider({children}) {
         console.log("User has successfully logged in 🔓")
     }
 
+    //function for logout
     function logout() {
         localStorage.removeItem('token')
         setAuth({

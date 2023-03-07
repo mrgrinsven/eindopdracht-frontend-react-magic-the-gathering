@@ -7,12 +7,15 @@ import './Register.css'
 import {AuthContext} from '../../context/AuthContext';
 
 const Register = () => {
+    //context for successful account register
     const {setSuccessfulRegister} = useContext(AuthContext);
 
+    //useStates for register form
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    //useStates for register form functionality
     const [error, toggleError] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [loading, toggleLoading] = useState(false);
@@ -21,6 +24,7 @@ const Register = () => {
 
     const registerController = new AbortController();
 
+    //useEffect for cleanup
     useEffect(() => {
         return function cleanup() {
             registerController.abort();
@@ -28,6 +32,7 @@ const Register = () => {
         // eslint-disable-next-line
     }, []);
 
+    //handler function for registering account
     async function handleRegister(e) {
         e.preventDefault();
         toggleError(false);
@@ -143,6 +148,7 @@ const Register = () => {
                 <p>Already have an account? <Link className="page-link" to="/login">Login here.</Link></p>
             </div>
         </div>
-    );};
+    );
+};
 
 export default Register;
