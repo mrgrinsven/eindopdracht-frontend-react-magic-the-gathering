@@ -281,7 +281,7 @@ const DeckManagement = () => {
                             type="button"
                             className="next-button deck-management-button"
                             value="next"
-                            disabled={searchParams.page === pageCount || pageCount === 1}
+                            disabled={searchParams.page === pageCount || pageCount === 1 || pageCount === 0 || pageCount === null}
                             onClick={pageHandler}
                         >
                             next page
@@ -291,7 +291,7 @@ const DeckManagement = () => {
                             type="button"
                             className="next-button deck-management-button"
                             value="last"
-                            disabled={searchParams.page === pageCount || pageCount === 1}
+                            disabled={searchParams.page === pageCount || pageCount === 1 | pageCount === 0 || pageCount === null}
                             onClick={pageHandler}
                         >
                             last page

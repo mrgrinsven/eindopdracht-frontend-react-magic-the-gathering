@@ -56,6 +56,7 @@ const CardParamsContextProvider = ({children}) => {
     const [searchParams, setSearchParams] = useState({
         contains: 'imageUrl',
         page: 1,
+        pageSize: 70,
     });
     const [filterParams, setFilterParams] = useState({
         artist: '',
@@ -69,6 +70,7 @@ const CardParamsContextProvider = ({children}) => {
         text: '',
         contains: 'imageUrl',
         page: 1,
+        pageSize: 70,
     });
 
     const [nameParams, setNameParams] = useState({
@@ -95,14 +97,14 @@ const CardParamsContextProvider = ({children}) => {
                     params: searchParams,
                     signal: cardController.signal,
                 });
-                setPageCount(Math.floor(result.headers['total-count'] / 100))
+                setPageCount(Math.floor(result.headers['total-count'] /70))
                 setCardList(result.data.cards)
             } catch (e) {
                 console.log(e)
                 if (e.code === 'ERR_CANCELED') {
                     console.log('controller successfully aborted')
                 } else if (e.code === 'ERR_NETWORK') {
-                    setParamErrorMessage('We are temporarily offline for maintenance. Please try again later')
+                    setParamErrorMessage('Service unavailable 503 error')
                 } else {
                     console.error(e);
                     setParamErrorMessage('Something went wrong please try again')

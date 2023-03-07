@@ -1,5 +1,5 @@
 .type-filter {
-    color: black;
+    color: var(--filter-button-text-color);
     text-align: center;
     font-weight: bold;
     font-size: 16px;

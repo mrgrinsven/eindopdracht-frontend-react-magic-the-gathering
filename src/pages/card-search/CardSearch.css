@@ -22,7 +22,6 @@
 .redirect-link {
     text-decoration: underline;
     text-transform: uppercase;
-    color: white;
     padding: 10px;
 }
 
@@ -31,5 +30,5 @@
 }
 
 .search-result-error {
-    color: red;
+    color: var(--error-text-color);
 }

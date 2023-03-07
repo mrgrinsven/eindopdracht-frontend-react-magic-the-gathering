@@ -1,6 +1,6 @@
 .deck-management-container {
-    background-color: lightgray;
-    color: black;
+    background-color: var(--deck-management-background-color);
+    color: var(--deck-management-text-color);
     position: sticky;
     top: 0;
     display: flex;
@@ -24,10 +24,11 @@
     flex-direction: row;
     justify-content: center;
     gap: 10px;
+    font-weight: bold;
 }
 
 .error-deck-management {
-    color: red;
+    color: var(--error-text-color);
 }
 
 .create-deck-name-field {
@@ -46,19 +47,19 @@
 
 .deck-management-button {
     text-decoration: none;
-    background-color: white;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     border: 1px solid black;
     border-radius: 5px;
     padding: 2px 5px;
     font-weight: bold;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    color: black;
 }
 
 .deck-management-button:hover {
     cursor: pointer;
-    background-color: ghostwhite;
+    background-color: var(--button-hover-background-color);
 }
 
 .deck-management-button:active {
@@ -67,14 +68,10 @@
 }
 
 .deck-management-button:disabled {
-    background-color: lightgray;
+    background-color: var(--button-disabled-background-color);
+    color:var(--button-disabled-text-color);
     transform: translateY(0px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    color: grey;
-}
-
-.deck-management-button:visited {
-    color: black;
 }
 
 .deck-management-info-container {
@@ -94,13 +91,13 @@
 
 .next-button:before {
     width: 0;
-    height: 0px;
+    height: 0;
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     right: -11px;
-    border-top: 13.4px solid transparent;
-    border-bottom: 13.3px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
     border-left: 10px solid grey;
 }
 
@@ -109,10 +106,10 @@
     height: 0;
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     right: -16px;
-    border-top: 13.4px solid transparent;
-    border-bottom: 13.3px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
     border-left: 10px solid black;
 }
 
@@ -120,6 +117,7 @@
     border-radius: 0;
     font-size: 13px;
     width: 105px;
+    position: relative;
 }
 
 .previous-button::before {
@@ -127,10 +125,10 @@
     height: 0;
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: -11px;
-    border-top: 13.4px solid transparent;
-    border-bottom: 13.3px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
     border-right: 10px solid grey;
 }
 
@@ -139,10 +137,10 @@
     height: 0;
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: -16px;
-    border-top: 13.4px solid transparent;
-    border-bottom: 13.3px solid transparent;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
     border-right: 10px solid black;
 }
 

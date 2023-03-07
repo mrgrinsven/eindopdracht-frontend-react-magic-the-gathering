@@ -18,10 +18,10 @@ const CardSearch = () => {
                 <>
                     <h1 className="login-message">Please log in to use this feature</h1>
                     <p><NavLink
-                        className="redirect-link"
+                        className="redirect-link page-link"
                         to="/login"
                     >log in here.</NavLink> No account?<NavLink
-                        className="redirect-link"
+                        className="redirect-link page-link"
                         to="/register"
                     >register here</NavLink>
                     </p>

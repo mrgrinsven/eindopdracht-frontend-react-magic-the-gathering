@@ -34,7 +34,8 @@
 
 .login-button {
     width: 100%;
-    background-color: white;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     border-style: solid;
     border-color: black;
     border-width: 1px;
@@ -45,7 +46,7 @@
 
 .login-button:hover {
     cursor: pointer;
-    background-color: ghostwhite;
+    background-color: var(--button-hover-background-color);
 }
 
 .login-button:active {
@@ -54,6 +55,10 @@
 
 .password-warning {
     height: 10px;
-    color: red;
+    color: var(--error-text-color);
     margin: 0 0 10px 0;
+}
+
+.successful-register-text {
+    color: var(--succesful-register-text-color);
 }

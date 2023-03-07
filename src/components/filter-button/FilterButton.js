@@ -6,6 +6,7 @@ const FilterButton = ({iconImage, id, name, filter, changeHandler, value, text, 
     return (
         <>
             <label
+                aria-label={id}
                 htmlFor={id}
                 className={filter ? "icon-container icon-container-active" : "icon-container"}
                 style={{

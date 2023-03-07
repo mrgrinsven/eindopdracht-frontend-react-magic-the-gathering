@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap');
+
 /* ------------------------------- 1. Global Styles -------------------------------- */
 * {
   margin: 0;
@@ -5,28 +7,62 @@
   box-sizing: border-box;
 }
 
+:root {
+  --basic-text-color: #FFFFFFFF;
+  --navlink-text-color: #FFFFFFFF;
+  --hyperlink-text-color: #FFFFFFFF;
+  --error-text-color: #FC0101FF;
+  --succesful-register-text-color: #FFD700FF;
+
+  --filter-button-text-color: #000000FF;
+  --filter-button-background-color: #FFFFFFFF;
+  --filter-button-active-background-color: #FFD700FF;
+  --filter-container-background-color: #D3D3D3FF;
+
+  --deck-management-text-color: #000000FF;
+  --deck-management-background-color: #D3D3D3FF;
+
+  --button-text-color: #000000FF;
+  --button-background-color: #FFFFFFFF;
+  --button-hover-background-color: #F8F8FFFF;
+  --button-disabled-background-color: #D3D3D3FF;
+  --button-disabled-text-color: #808080FF;
+  --button-active-text-color: #808080FF;
+
+  --header-background-color: #000000FF;
+  --main-background-color: #3D3B3BFF;
+  --footer-background-color: #000000FF;
+
+  --body-background-image: url("./assets/background.png");
+}
+
+/* ------------------------------- 2. Typography ----------------------------------- */
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Maven Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./assets/background.png");
+
+  color: var(--basic-text-color)
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+/* ------------------------------- 3. Layout --------------------------------------- */
+
+body {
+  margin: 0;
+  background-image: var(--body-background-image);
   background-attachment: fixed;
   background-size: 250px;
   min-height: 100vh;
   position: relative;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/* ------------------------------- 2. Typography ----------------------------------- */
-
-/* ------------------------------- 3. Layout --------------------------------------- */
 
 .outer-container {
   display: flex;

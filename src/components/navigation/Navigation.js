@@ -16,7 +16,9 @@ const Navigation = ({children}) => {
                 <li>
                     <NavLink className="nav-link" to="/card-search">card search</NavLink>
                 </li>
-                {children}
+                <li>
+                    {children}
+                </li>
                 <li>
                     {!isAuth &&
                         <NavLink className="nav-link" to="/register">register</NavLink>

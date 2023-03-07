@@ -1,10 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 import './Register.css'
 
+import {AuthContext} from '../../context/AuthContext';
+
 const Register = () => {
+    const {setSuccessfulRegister} = useContext(AuthContext);
+
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -21,6 +25,7 @@ const Register = () => {
         return function cleanup() {
             registerController.abort();
         }
+        // eslint-disable-next-line
     }, []);
 
     async function handleRegister(e) {
@@ -44,7 +49,8 @@ const Register = () => {
                 }, {
                     signal: registerController.signal
                 });
-                navigate('/login')
+                setSuccessfulRegister(true);
+                navigate('/login');
             } catch (e) {
                 if (e.response.data.message) {
                     setErrorMessage(e.response.data.message);

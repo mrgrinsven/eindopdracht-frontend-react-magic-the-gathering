@@ -16,7 +16,7 @@ const SetFilter = () => {
     return (
         <>
             <FilterTextField
-                id="artist-name-search"
+                id="set-search"
                 placeholder="Set Filter"
                 changeHandler={handleChange}
                 value={filterParams.setName}

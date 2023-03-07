@@ -26,7 +26,7 @@
     outline: none;
 }
 .name-search-button {
-    background-color: white;
+    background-color: var(--button-background-color);
     border-style: solid;
     border-color: black;
     border-width: 1px;
@@ -40,7 +40,7 @@
 
 .name-search-button:hover {
     cursor: pointer;
-    background-color: ghostwhite;
+    background-color: var(--button-hover-background-color);
 }
 
 .name-search-button img {

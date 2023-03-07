@@ -1,5 +1,5 @@
 .power-toughness-container {
-    color: black;
+    color: var(--filter-button-text-color);;
     font-weight: bold;
     display: flex;
     flex-direction: row;

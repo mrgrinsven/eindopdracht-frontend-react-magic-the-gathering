@@ -11,8 +11,8 @@
 }
 
 .counter-container {
-    background-color: white;
-    color: black;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -30,8 +30,8 @@
 }
 
 .deck-button  {
-    color: black;
-    background-color: white;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     text-transform: capitalize;
     font-size: 18px;
     font-weight: bold;
@@ -50,15 +50,17 @@
 
 .deck-button:hover {
     cursor: pointer;
+    background-color: var(--button-hover-background-color);
 }
 
 .deck-button:active {
     transform: translateY(2px);
-    color: gray;
+    color: var(--button-active-text-color);
 }
 
 .deck-button:disabled {
-    background-color: lightgray;
+    background-color: var(--button-disabled-background-color);
+    color: var(--button-disabled-text-color);
 }
 
 .deck-button:active:disabled {

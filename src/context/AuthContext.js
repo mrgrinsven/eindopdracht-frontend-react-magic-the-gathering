@@ -14,6 +14,8 @@ function AuthContextProvider({children}) {
         status: 'pending'
     });
 
+    const [successfulRegister, setSuccessfulRegister] = useState(false)
+
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -30,6 +32,7 @@ function AuthContextProvider({children}) {
                 status: 'done',
             });
         }
+        // eslint-disable-next-line
     }, []);
 
 
@@ -94,7 +97,9 @@ function AuthContextProvider({children}) {
         isAuth: auth.isAuth,
         user: auth.user,
         login: login,
-        logout: logout
+        logout: logout,
+        successfulRegister: successfulRegister,
+        setSuccessfulRegister: setSuccessfulRegister
     }
 
     return (

@@ -23,11 +23,11 @@ const Home = () => {
                             <p>To make use of the card database and deck creation you need to have an account and log
                                 in.</p>
                             <p>To start using the card database <NavLink
-                            className="get-started-link"
+                            className="page-link"
                             to="/login"
                             >log in here</NavLink>.</p>
                             <p>If you do not have an account <NavLink
-                            className="get-started-link"
+                            className="page-link"
                             to="/register"
                             >register here</NavLink> first.</p>
                             </>
@@ -36,11 +36,11 @@ const Home = () => {
                         {isAuth &&
                             <>
                                 <p>If you want search for cards proceed to the <NavLink
-                                    className="get-started-link"
+                                    className="page-link"
                                     to="/card-search"
                                 >card-search page.</NavLink></p>
                                 <p>If you want to manage your deck proceed to the <NavLink
-                                    className="get-started-link"
+                                    className="page-link"
                                     to="/deck"
                                 >deck-management page.</NavLink></p>
                             </>
@@ -51,7 +51,7 @@ const Home = () => {
                         <h3>Additional information:</h3>
                         <p>
                             Visit this <a
-                            className="visit-link"
+                            className="page-link"
                             href="https://en.wikipedia.org/wiki/Magic:_The_Gathering_rules"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -60,7 +60,7 @@ const Home = () => {
                         </p>
                         <p>
                             Visit the <a
-                            className="visit-link"
+                            className="page-link"
                             href="https://magic.wizards.com/"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -69,7 +69,7 @@ const Home = () => {
                         </p>
                         <p>
                             Visit the <a
-                            className="visit-link"
+                            className="page-link"
                             href="https://magic.wizards.com/en/mtgarena"
                             target="_blank"
                             rel="noopener noreferrer"

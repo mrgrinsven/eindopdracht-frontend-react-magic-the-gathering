@@ -7,7 +7,7 @@ import './Login.css'
 import {AuthContext} from '../../context/AuthContext';
 
 const Login = () => {
-    const {login} = useContext(AuthContext);
+    const {login, successfulRegister} = useContext(AuthContext);
 
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
@@ -19,9 +19,12 @@ const Login = () => {
     const loginController = new AbortController();
 
     useEffect(() => {
+
         return function cleanup() {
             loginController.abort();
+            console.log('cleanuptest')
         }
+        // eslint-disable-next-line
     },[]);
 
     async function handlePassword(e) {
@@ -119,6 +122,8 @@ const Login = () => {
             </form>
 
             <p>No account yet? <Link className="page-link" to="/register">Register here.</Link></p>
+
+            {successfulRegister && <p className="successful-register-text">Your account was successfully created</p>}
         </div>
         </div>
     );
