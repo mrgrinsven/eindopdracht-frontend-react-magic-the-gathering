@@ -5,7 +5,7 @@ Decks that users create are stored on their local storage.
 ![web screenshot](/src/assets/mtg-card-database-screenshot.jpg)
 
 ## Installation
-Please download and install [node](https://nodejs.org/en/download/) before you start if you haven't already.
+Please download and install [node](https://nodejs.org/en/download/) before you start if you haven't got it installed already.
 
 To install all packages run:
 
