@@ -1,0 +1,22 @@
+.text-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0 0 5px 0;
+    width: 100%;
+    height: 100%;
+}
+
+.text-search {
+    width: 100%;
+    padding: 6px 6px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.text-search:focus {
+    outline: none;
+}

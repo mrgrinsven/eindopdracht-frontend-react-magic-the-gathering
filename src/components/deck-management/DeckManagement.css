@@ -1,0 +1,153 @@
+.deck-management-container {
+    background-color: var(--deck-management-background-color);
+    color: var(--deck-management-text-color);
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 0 0 15px 15px;
+}
+
+.deck-management-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 360px;
+}
+
+.deck-management-action-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.error-deck-management {
+    color: var(--error-text-color);
+}
+
+.create-deck-name-field {
+    width: 160px;
+    padding: 2px 6px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.create-deck-name-field:focus {
+    outline: none;
+}
+
+.deck-management-button {
+    text-decoration: none;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-weight: bold;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.deck-management-button:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-background-color);
+}
+
+.deck-management-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.deck-management-button:disabled {
+    background-color: var(--button-disabled-background-color);
+    color:var(--button-disabled-text-color);
+    transform: translateY(0px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.deck-management-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.next-button {
+    border-radius: 0;
+    font-size: 13px;
+    width: 105px;
+    position: relative;
+}
+
+.next-button:before {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -11px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 10px solid grey;
+}
+
+.next-button::after {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -16px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 10px solid black;
+}
+
+.previous-button {
+    border-radius: 0;
+    font-size: 13px;
+    width: 105px;
+    position: relative;
+}
+
+.previous-button::before {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -11px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 10px solid grey;
+}
+
+.previous-button::after {
+    width: 0;
+    height: 0;
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -16px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-right: 10px solid black;
+}
+
+.page-management-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 5px;
+}
