@@ -15,8 +15,10 @@ import DeckManagement from '../deck-management/DeckManagement';
 
 
 const CardFilters = () => {
+    //context for search parameters and search functionality
     const {setSearchParams, filterParams, toggleActivateSearch, paramLoading} = useContext(CardParamsContext);
 
+    //function for setting searchParams with filterParams
     function paramsFilterSearch() {
         toggleActivateSearch(true);
         setSearchParams(filterParams);
@@ -48,7 +50,7 @@ const CardFilters = () => {
                     </div>
                 </div>
 
-                <div className="filer-search-button-container">
+                <div className="filter-search-button-container">
                     <button
                         id="filter-search-button"
                         type="button"

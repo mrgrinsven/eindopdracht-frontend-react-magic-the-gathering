@@ -11,8 +11,10 @@ import Mythic from '../../assets/mythic.png';
 import {CardParamsContext} from '../../context/CardParamsContext';
 
 const RarityFilter = () => {
+    //context for filter search parameters and filter checkboxes
     const {filterParams, setFilterParams, rarityFilter, setRarityFilter} = useContext(CardParamsContext);
 
+    //handler for setting search parameters
     function  handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.checked;

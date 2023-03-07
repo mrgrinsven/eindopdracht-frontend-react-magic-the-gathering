@@ -7,7 +7,10 @@ import SearchIcon from '../../assets/search_icon.png';
 
 
 const CardNameSearch = () => {
+    //context for name search parameters
     const {setSearchParams, nameParams, setNameParams, toggleActivateSearch} = useContext(CardParamsContext);
+
+    //handler for setting search parameters
     function paramsNameSearch() {
         toggleActivateSearch(true);
         setSearchParams(nameParams);

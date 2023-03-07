@@ -6,8 +6,10 @@ import FilterButton from '../filter-button/FilterButton';
 import {CardParamsContext} from '../../context/CardParamsContext';
 
 const TypeFilter = () => {
+    //context for filter search parameters and filter checkboxes
     const {filterParams, setFilterParams, typeFilter, setTypeFilter} = useContext(CardParamsContext);
 
+    //handler for setting search parameters
     function  handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.checked;

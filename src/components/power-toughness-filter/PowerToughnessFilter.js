@@ -4,8 +4,10 @@ import {CardParamsContext} from '../../context/CardParamsContext';
 import './PowerToughnessFilter.css'
 
 const PowerToughnessFilter = () => {
+    //context for filter search parameters
     const {filterParams, setFilterParams} = useContext(CardParamsContext);
 
+    //handler for setting search parameters
     function handleChange(event) {
         const changedFieldName = event.target.name;
         const newValue = event.target.value;

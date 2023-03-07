@@ -6,7 +6,10 @@ import './SetFilter.css'
 import FilterTextField from "../filter-text-field/FilterTextField";
 
 const SetFilter = () => {
+    //context for search parameters
     const {filterParams, setFilterParams} = useContext(CardParamsContext);
+
+    //handler for setting search parameters
     function handleChange(event) {
         setFilterParams({
             ...filterParams,

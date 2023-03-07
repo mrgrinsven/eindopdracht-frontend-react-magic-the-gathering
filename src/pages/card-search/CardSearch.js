@@ -9,7 +9,9 @@ import {CardParamsContext} from '../../context/CardParamsContext';
 import {AuthContext} from '../../context/AuthContext';
 
 const CardSearch = () => {
+    //context for card search results and functionality
     const {cardList, paramError, paramErrorMessage, paramLoading} = useContext(CardParamsContext);
+    //context for authentication check
     const {isAuth} = useContext(AuthContext);
 
     return (
